@@ -138,4 +138,74 @@ class Process_product extends database
             echo "Nothing to show";
         }
     }
+    function Print_Detail($id)
+    {
+        $sql = 'SELECT * from products WHERE id =' . $id;
+        $product = $this->Get_list($sql);
+        if ($product <> 0) {
+            $product = $product[0];
+            if ($product['image'] == null || $product['image'] == "") $product["image"] = '';
+            else  $product["image"] = '../' .  $product["image"];
+            echo '
+                                  <div class="card">
+                                    <div class="imgBx">
+                                        <img src="' . $product['image'] . '" alt="images">
+                                    </div>
+                                    <div class="details">
+                                        <h2>' . $product['name'] . '</h2>
+                                        <a class="button-34" href="./detail.php?id=' . $product['id'] . '">Mua ngay</a>
+                                    </div>
+                                </div>
+
+
+                                 <div id="container">
+                                    <div class="product-details">
+                                        <h1>' . $product['name'] . '</h1>
+                                        <span class="hint-star star">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </span>
+                                        <p class="information">" Mua hàng ngay</p>
+                                        <p class="information">"Mua hàng luôn</p>
+                                        <p class="information">"buy it please</p>
+                                        <div class="control">
+
+                                            <button class="btn">
+                                                <span class="price">' . $product['price'] . '</span>
+                                                <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                                                <span class="buy">Get now</span>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="product-image">
+
+                                        <img src="' . $product['image'] . '"
+                                            alt="">
+
+
+                                        <div class="info">
+                                            <h2> Description</h2>
+                                            <ul>
+                                                <li><strong>Height : </strong>5 Ft </li>
+                                                <li><strong>Shade : </strong>Olive green</li>
+                                                <li><strong>Decoration: </strong>balls and bells</li>
+                                                <li><strong>Material: </strong>Eco-Friendly</li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                                            
+                             ';
+        } else {
+            echo "Nothing to show";
+        }
+    }
 }
