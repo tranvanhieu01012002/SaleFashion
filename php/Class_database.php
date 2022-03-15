@@ -114,4 +114,28 @@ class Process_product extends database
             echo "Nothing to show";
         }
     }
+    function Print_card()
+    {
+        $arr = $this->Get_list('SELECT * from products');
+        if ($arr <> 0) {
+            foreach ($arr as $product) {
+                if ($product['image'] == null || $product['image'] == "") $product["image"] = '';
+                else  $product["image"] = '../' .  $product["image"];
+                echo '
+                                  <div class="card">
+                                    <div class="imgBx">
+                                        <img src="' . $product['image'] . '" alt="images">
+                                    </div>
+                                    <div class="details">
+                                        <h2>' . $product['name'] . '</h2>
+                                        <a class="button-34" href="./detail.php?id=' . $product['id'] . '">Mua ngay</a>
+                                    </div>
+                                </div>
+                                
+                             ';
+            }
+        } else {
+            echo "Nothing to show";
+        }
+    }
 }
