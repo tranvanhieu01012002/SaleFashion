@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require  "../php/Class_database.php";
-$show = new Process_product();
-error_reporting(1)
+require  "../php/ProcessUser.php";
+$show = new ProcessUser();
+// error_reporting(1)
 
 ?>
 
@@ -25,44 +25,20 @@ error_reporting(1)
             Shopping Bag
         </div>
         <!-- Product #3 -->
-        <div class="item">
-            <div class="buttons">
-                <span class="delete-btn">X</span>
-            </div>
-
-            <div class="image">
-                <img src="item-3.png" alt="" />
-            </div>
-
-            <div class="description">
-                <span>Our Legacy</span>
-                <span>Brushed Scarf</span>
-                <span>Brown</span>
-            </div>
-
-            <div class="quantity">
-                <button class="plus-btn" type="button" name="button">
-                    +
-                </button>
-                <input type="text" class="abc" name="name" value="1">
-                <button class="minus-btn" type="button" name="button">
-                    -
-                </button>
-            </div>
-            <div class="total-price">349</div>
-        </div>
         <?php
         if (isset($_GET["id"])) {
-            $show->RenderData($_GET["id"]);
+            $show->Add_to_cart(1, $_GET["id"]);
+            $show->RenderData(1);
             $show->disconnect();
         }
 
 
 
         ?>
-    </div>
 
-    <script src="./js/click.js"></script>
+    </div>
+    <a href="./index.php">Back to home</a>
+    <!-- <script src="./js/click.js"></script> -->
 </body>
 
 </html>

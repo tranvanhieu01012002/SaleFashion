@@ -91,8 +91,8 @@ body {
     }
 }
 
-.image {
-    margin-right: 50px;
+.image img {
+    width: 100px;
 }
 
 .description {
@@ -133,6 +133,7 @@ body {
     font-weight: 300;
 }
 
+.plus-btn,
 button[class*=btn] {
     width: 30px;
     height: 30px;
@@ -150,6 +151,11 @@ button[class*=btn] {
     margin-top: 2px;
 }
 
+.plus-btn {
+    font-size: 40px;
+}
+
+.plus-btn:focus,
 button:focus,
 input:focus {
     outline: 0;
@@ -178,7 +184,6 @@ input:focus {
     .image img {
         width: 50%;
     }
-    .image,
     .quantity,
     .description {
         width: 100%;

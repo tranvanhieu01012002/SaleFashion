@@ -33,7 +33,11 @@ class database
             $array[] = $row;
         }
         mysqli_free_result($cur);
-        return $array;
+        if (isset($array)) {
+            return $array;
+        } else {
+            return false;
+        }
     }
     function query()
     {
@@ -206,58 +210,6 @@ class Process_product extends database
                                     </div>
 
                                 </div>
-                                                            
-                             ';
-        } else {
-            echo "Nothing to show";
-        }
-    }
-    function Add_to_cart($idUser, $id, $quantity)
-    {
-        $sql = 'SELECT * from add_to_cart where id=' . $id;
-        $data = $this->Get_list($sql);
-        foreach ($data as $product) {
-            if ($id === $product['id']) {
-                
-            }
-        }
-    }
-    function RenderData($idUser)
-    {
-        $sql = 'SELECT * from add_to_cart ';
-        //WHERE id_user =' . $idUser
-        $data = $this->Get_list($sql);
-        if ($data <> 0) {
-            foreach ($data as $product)
-                $sqlGetImage = 'SELECT image from products WHERE id =' . $product['id'];
-            $getImage = $this->Get_list($sqlGetImage);
-            echo '
-                        <div class="item">
-                            <div class="buttons">
-                                <span class="delete-btn">X</span>
-                            </div>
-
-                            <div class="image">
-                                <img src="../' . $getImage[0]['image'] . '" alt="" />
-                            </div>
-
-                            <div class="description">
-                                <span>Our Legacy</span>
-                                <span>Brushed Scarf</span>
-                                <span>Brown</span>
-                            </div>
-
-                            <div class="quantity">
-                                <button class="plus-btn" type="button" name="button">
-                                    +
-                                </button>
-                                <input type="text" class="abc" name="name" value="1">
-                                <button class="minus-btn" type="button" name="button">
-                                    -
-                                </button>
-                            </div>
-                            <div class="total-price">' . $product["price"] . '</div>
-                        </div>
                                                             
                              ';
         } else {
